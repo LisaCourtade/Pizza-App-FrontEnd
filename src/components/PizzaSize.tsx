@@ -13,7 +13,7 @@ interface PizzaSizeProps {
 
 export default function PizzaSize({ setPizzaSize }: PizzaSizeProps) {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
       <FormControl component="fieldset" variant="standard">
         <Typography sx={{ mt: 1, mb: 1 }} variant="h6" component="div">
           Select pizza size

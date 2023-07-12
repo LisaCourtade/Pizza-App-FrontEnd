@@ -25,11 +25,19 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Box>
       <h1>Create your pizza</h1>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
-          <Grid item xs={4}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          width: "800px",
+          margin: "auto",
+          marginTop: "24px",
+        }}
+      >
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
             <ToppingsList
               allToppings={allToppings}
               selectedToppings={selectedToppings}
@@ -37,11 +45,9 @@ function App() {
               setHasTopping={setHasTopping}
             />
           </Grid>
-          <Grid item xs={4} >
-              <PizzaSize setPizzaSize={setPizzaSize} />
-          </Grid>
-          <Grid item xs={4}>
-            <Box sx={{ height: 50 }}>
+          <Grid item xs={6}>
+            <PizzaSize setPizzaSize={setPizzaSize} />
+            <Box mt={3} sx={{ height: 50 }}>
               <Link to={"/orders"}>See All Orders</Link>
             </Box>
             <PizzaOrder
@@ -52,7 +58,7 @@ function App() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 }
 

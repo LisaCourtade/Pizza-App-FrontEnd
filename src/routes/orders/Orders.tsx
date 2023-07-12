@@ -50,10 +50,10 @@ export default function Orders() {
         rowSpacing={1}
         columnSpacing={{ xs: 1 }}
       >
-        {orders.length > 0 ?
+        {orders.length > 0 ? (
           orders.map((order) => {
             return (
-              <Grid item xs={4}>
+              <Grid item xs={4} key={order.id}>
                 <Card sx={{ minWidth: 275 }}>
                   <CardContent>
                     <Typography
@@ -74,7 +74,9 @@ export default function Orders() {
                         <>
                           <ListItem key={"price"}>
                             <ListItemText primary={"Original price:"} />
-                            <ListItemIcon>{order.price.toFixed(2)} €</ListItemIcon>
+                            <ListItemIcon>
+                              {order.price.toFixed(2)} €
+                            </ListItemIcon>
                           </ListItem>
                           <ListItem key={"discount"}>
                             <ListItemText primary={"Discount:"} />
@@ -90,7 +92,9 @@ export default function Orders() {
                       ) : (
                         <ListItem key={"total"}>
                           <ListItemText primary={"Total cost:"} />
-                          <ListItemIcon>{order.price.toFixed(2)} €</ListItemIcon>
+                          <ListItemIcon>
+                            {order.price.toFixed(2)} €
+                          </ListItemIcon>
                         </ListItem>
                       )}
                     </List>
@@ -99,9 +103,10 @@ export default function Orders() {
                 </Card>
               </Grid>
             );
-          }) :
+          })
+        ) : (
           <p>No orders yet</p>
-        }
+        )}
       </Grid>
     </>
   );

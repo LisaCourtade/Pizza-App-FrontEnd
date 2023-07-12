@@ -93,7 +93,7 @@ export default function PizzaOrder({
   }, [pizzaSize]);
 
   useEffect(() => {
-    if (selectedToppings.filter((st) => st.added === true).length >= 3) {
+    if (selectedToppings.filter((st) => st.added === true).length > 3) {
       setDiscount(true);
       setDiscountPrice(totalPrice - (totalPrice * 10) / 100);
     } else {
@@ -126,7 +126,7 @@ export default function PizzaOrder({
         <ListItem key={"total"}>
           <ListItemText
             primary={discount ? "Original price:" : "Total cost:"}
-            secondary={discount && "3 or more toppings:  -10 % discount"}
+            secondary={discount && "More than 3 toppings:  -10 % discount"}
           />
           <ListItemIcon>{totalPrice.toFixed(2)} €</ListItemIcon>
         </ListItem>

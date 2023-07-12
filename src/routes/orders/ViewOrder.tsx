@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Order } from "./Orders";
 import {
+  Box,
   Card,
   CardContent,
   Grid,
@@ -34,7 +35,9 @@ export default function ViewOrder() {
 
   return (
     <>
-      <Link to={"/orders"}>See All Orders</Link>
+      <Box mt={3} sx={{ height: 50 }}>
+        <Link to={"/orders"}>See All Orders</Link>
+      </Box>
       <Grid
         container
         direction="row"
@@ -69,7 +72,9 @@ export default function ViewOrder() {
                       </ListItem>
                       <ListItem key={"discount price"}>
                         <ListItemText primary={"Discount price:"} />
-                        <ListItemIcon>{order.discount_price.toFixed(2)} €</ListItemIcon>
+                        <ListItemIcon>
+                          {order.discount_price.toFixed(2)} €
+                        </ListItemIcon>
                       </ListItem>
                     </>
                   ) : (
@@ -84,7 +89,9 @@ export default function ViewOrder() {
           </Grid>
         )}
       </Grid>
-      <Link to={"/"}>Order another pizza</Link>
+      <Box mt={3} sx={{ height: 50 }}>
+        <Link to={"/"}>Order another pizza</Link>
+      </Box>
     </>
   );
 }
