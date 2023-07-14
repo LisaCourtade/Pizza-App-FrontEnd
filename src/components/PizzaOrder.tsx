@@ -54,7 +54,7 @@ export default function PizzaOrder({
       size: pizzaSize,
       toppings: toppings,
     };
-    fetch("http://localhost:8000/api/orders", {
+    fetch("https://pizzapp-api.onrender.com/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

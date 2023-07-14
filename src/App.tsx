@@ -13,9 +13,12 @@ function App() {
   const [hasTopping, setHasTopping] = useState<boolean>(false);
 
   async function fetchToppings() {
-    const response = await fetch("http://localhost:8000/api/toppings");
+    const response = await fetch("https://pizzapp-api.onrender.com/api/toppings");
     const data = (await response.json()) as Topping[];
-    setAllToppings(data);
+    setAllToppings(data.map(d => ({
+      ...d,
+      price: Number(d.price),
+    })));
   }
 
   useEffect(() => {

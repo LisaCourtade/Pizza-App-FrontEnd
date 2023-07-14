@@ -24,10 +24,15 @@ export default function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
 
   async function fetchOrders() {
-    const response = await fetch("http://localhost:8000/api/orders");
+    const response = await fetch("https://pizzapp-api.onrender.com/api/orders");
     const data = (await response.json()) as Order[];
     const ordersArray = Object.values(data);
-    setOrders(ordersArray);
+    setOrders(ordersArray.map((o: Order) => ({
+      ...o,
+      price: Number(o.price),
+      discount: Number(o.discount),
+      discount_price: Number(o.discount_price),
+    })));
   }
 
   useEffect(() => {

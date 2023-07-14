@@ -17,11 +17,16 @@ export default function ViewOrder() {
   const [order, setOrder] = useState<Order>();
 
   async function fetchOrderById(id: string) {
-    const response = await fetch(`http://localhost:8000/api/orders/${id}`);
+    const response = await fetch(`https://pizzapp-api.onrender.com/api/orders/${id}`);
     const data = (await response.json()) as Order;
     const orderArray = Object.values(data) as Order[];
-    const order = orderArray[0];
-    setOrder(order);
+    const order = orderArray.map((o: Order) => ({
+      ...o,
+      price: Number(o.price),
+      discount: Number(o.discount),
+      discount_price: Number(o.discount_price),
+    }));
+    setOrder(order[0]);
   }
   const params = useParams();
   const { orderId } = params;
